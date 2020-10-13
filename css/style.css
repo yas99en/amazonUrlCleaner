@@ -19,14 +19,14 @@ html,
 }
 
 .title {
-  font-size: 3rem;
+  font-size: 1rem;
 }
 
 #clean {
-  font-size: 2rem;
+  font-size: 1rem;
 }
 
 #resultArea {
-    font-size: 2rem;
+    font-size: 1rem;
     margin: 15px;
 }
