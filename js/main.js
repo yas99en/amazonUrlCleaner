@@ -24,9 +24,8 @@ window.onload = () => {
     }
 
     
-    cleanButton.addEventListener("click", async e => {
-        cleanURL();
-    });
+    cleanButton.addEventListener("click", e => cleanURL());
+    window.addEventListener("focus", e => cleanURL());
 
     async function cleanURL() {
         resultLink.style.display = "";
