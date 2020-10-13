@@ -7,6 +7,23 @@ window.onload = () => {
     var resultLink = document.getElementById("resultLink");
     var errorArea = document.getElementById("errorArea");
 
+    var patterns = [
+        { regex: /https:\/\/www.amazon.co.jp\/([^/]*\/)?dp\/([^/]*)(\/.*)?/, index: 2 },
+        { regex: /https:\/\/www.amazon.co.jp\/gp\/product\/([^/]*)(\/.*)?/, index: 1 },
+        { regex: /https:\/\/www.amazon.co.jp\/exec\/obidos\/ASIN\/([^/]*)(\/.*)?/, index: 1},
+        { regex: /https:\/\/www.amazon.co.jp\/o\/ASIN\/([^/]*)(\/.*)?/, index: 1},
+    ];
+    function getAsin(url) {
+        for(const pattern of patterns) {
+            var matched = url.match(pattern.regex)
+            if(matched) {
+                return matched[pattern.index];
+            }
+        }
+        return null;
+    }
+
+    
     cleanButton.addEventListener("click", async e => {
         cleanURL();
     });
@@ -25,18 +42,19 @@ window.onload = () => {
 
         var text = await navigator.clipboard.readText()
 
-        var regex = /https:\/\/www.amazon.co.jp\/([^/]*\/)?dp\/([^/]*)(\/.*)?/
-        var matched = text.match(regex);
-        if(!matched) {
+        var asin = getAsin(text);
+
+        if(!asin) {
             resultLink.style.display = "none";
             errorArea.style.display = "";
             errorArea.textContent = "No Match";
             errorArea.href = "";
             return;
         }
-        var replaced = "https://www.amazon.co.jp/dp/"+matched[2]
+        var replaced = "https://www.amazon.co.jp/dp/"+asin;
         resultLink.textContent = replaced;
         resultLink.href = replaced;
+
         if(document.hasFocus()) {
             navigator.clipboard.writeText(replaced);
         }
