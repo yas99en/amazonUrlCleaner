@@ -1,0 +1,32 @@
+body {
+  font-family: sans-serif;
+}
+
+/* コンテンツがブラウザのウインドウを100%使うようにしましょう */
+html,
+.fullscreen {
+  display: flex;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+/* コンテンツは画面の中央に来るようにね*/
+.container {
+  margin: auto;
+  text-align: center;
+}
+
+.title {
+  font-size: 3rem;
+}
+
+#clean {
+  font-size: 2rem;
+}
+
+#resultArea {
+    font-size: 2rem;
+    margin: 15px;
+}
