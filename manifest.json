@@ -2,7 +2,7 @@
     "name": "Amazon URL Cleaner",
     "short_name": "AUC",
     "lang": "en-US",
-    "start_url": "/~yendoh/auc/index.html",
+    "start_url": "/amazonUrlCleaner/index.html",
     "display": "standalone",
     "background_color": "white",
     "theme_color": "white",
