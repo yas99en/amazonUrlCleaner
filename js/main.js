@@ -8,7 +8,7 @@ window.onload = () => {
     var errorArea = document.getElementById("errorArea");
 
     var patterns = [
-        { regex: /https:\/\/www.amazon.co.jp\/([^/]*\/)?dp\/([^/]*)(\/.*)?/, index: 2 },
+        { regex: /https:\/\/www.amazon.co.jp\/([^/]*\/)?dp\/([^?/]*)(.*)?/, index: 2 },
         { regex: /https:\/\/www.amazon.co.jp\/gp\/product\/([^/]*)(\/.*)?/, index: 1 },
         { regex: /https:\/\/www.amazon.co.jp\/exec\/obidos\/ASIN\/([^/]*)(\/.*)?/, index: 1},
         { regex: /https:\/\/www.amazon.co.jp\/o\/ASIN\/([^/]*)(\/.*)?/, index: 1},
