@@ -4,7 +4,9 @@ window.onload = () => {
     // navigator.serviceWorker.register('./sw.js');
 
     var cleanButton = document.getElementById("clean");
+    var resultArea = document.getElementById("resultArea");
     var resultLink = document.getElementById("resultLink");
+    var sakuraLink = document.getElementById("sakuraLink");
     var errorArea = document.getElementById("errorArea");
 
     var patterns = [
@@ -29,14 +31,13 @@ window.onload = () => {
     window.addEventListener("focus", e => cleanURL());
 
     async function cleanURL() {
-        resultLink.style.display = "";
+        resultArea.style.display = "";
         errorArea.style.display = "none";
         
         if(!document.hasFocus()) {
-            resultLink.style.display = "none";
+            resultArea.style.display = "none";
             errorArea.style.display = "";
             errorArea.textContent = "Not Focused";
-            errorArea.href = "";
             return;
         }
 
@@ -45,15 +46,19 @@ window.onload = () => {
         var asin = getAsin(text);
 
         if(!asin) {
-            resultLink.style.display = "none";
+            resultArea.style.display = "none";
             errorArea.style.display = "";
             errorArea.textContent = "No Match";
-            errorArea.href = "";
             return;
         }
-        var replaced = "https://www.amazon.co.jp/dp/"+asin;
-        resultLink.textContent = replaced;
-        resultLink.href = replaced;
+
+        var amazonUrl = "https://www.amazon.co.jp/dp/"+asin;
+        resultLink.textContent = amazonUrl;
+        resultLink.href = amazonUrl;
+
+		var sakuraUrl = "https://sakura-checker.jp/search/"+asin+"/";
+        sakuraLink.textContent = sakuraUrl;
+        sakuraLink.href = sakuraUrl;
 
         if(document.hasFocus()) {
             navigator.clipboard.writeText(replaced);
