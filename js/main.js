@@ -61,7 +61,7 @@ window.onload = () => {
         sakuraLink.href = sakuraUrl;
 
         if(document.hasFocus()) {
-            navigator.clipboard.writeText(replaced);
+            navigator.clipboard.writeText(amazonUrl);
         }
     }
 
